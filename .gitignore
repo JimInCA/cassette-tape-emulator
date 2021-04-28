@@ -1,0 +1,12 @@
+/obj
+/bin
+*/x64
+/19200KHz
+/2400-1200
+/USBtoSerial
+/pll_encoder
+/transceiver
+/uart_bridge
+/test_data
+*/.vs
+
