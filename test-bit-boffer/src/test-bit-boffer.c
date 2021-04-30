@@ -245,6 +245,12 @@ int main(int argc, char **argv)
 
     fflush(stdout);
 
+    // let's see if we can flush any waiting bytes from the uart buffer before we begin
+    do
+    {
+        ReadFile(rcv_uart, in_buff, sizeof(in_buff), &num_read, NULL);
+    } while (num_read != 0);
+
     switch (test_num)
     {
     case 0:  for (i = 0; i < 0x100; i++)
@@ -271,6 +277,7 @@ int main(int argc, char **argv)
                      {
                          error -= 1;
                          printf("Error: sent 0x%02x -> received 0x%02x\n", out_char, in_char);
+                         fflush(stdout);
                      }
                  }
              }
@@ -295,6 +302,7 @@ int main(int argc, char **argv)
                          {
                              error -= 1;
                              printf("Error: sent 0x%02x -> received 0x%02x\n", out_char, in_char);
+                             fflush(stdout);
                          }
                      }
                  }
@@ -326,6 +334,7 @@ int main(int argc, char **argv)
                          {
                              error -= 1;
                              printf("Error: sent 0x%02x -> received 0x%02x\n", out_char, in_char);
+                             fflush(stdout);
                          }
                      }
                  }
@@ -351,6 +360,7 @@ int main(int argc, char **argv)
                          {
                              error -= 1;
                              printf("Error: sent 0x%02x -> received 0x%02x\n", out_char, in_char);
+                             fflush(stdout);
                          }
                      }
                  }
