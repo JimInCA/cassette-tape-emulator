@@ -213,7 +213,16 @@ int main(int argc, char **argv)
             printf("  -o COMPORT     Receiver COM Port when TESTNUM > 0.\n");
             printf("  -b BAUDRATE    Desired baudrate, default: 300.\n");
             printf("  -t TESTNUM     Desired test to be executed.\n");
-            printf("  -n LOOPNUM     Number of test cycles in loop.\n");
+            printf("                 0: Generate a count from 0x00 to 0xff and send to transmitter.\n");
+            printf("                    Connect a uart terminal window to receiver's com port.\n");
+            printf("                 1: Generate a count from 0x00 to 0xff, send to transmitter\n");
+            printf("                    and verify that the receiver recieved the correct data.\n");
+            printf("                 2: Send 'n' number of 0xff markers to transmitter and verify on receiver.\n");
+            printf("                 3: Send code for USED5 program to transmitter and verify on receiver.\n");
+            printf("                 4: Combine test 2 followed by test 3. This emulates a Load sequence.\n");
+            printf("                 5: Generate 'n' number of random bytes, send to transmitter and\n");
+            printf("                    verify on receiver.\n");
+            printf("  -n LOOPNUM     Number of test cycles in test loop.\n");
         }
         else
         {

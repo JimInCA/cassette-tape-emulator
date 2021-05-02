@@ -1,19 +1,20 @@
-/* LED Blink, Teensyduino Tutorial #1
-   http://www.pjrc.com/teensy/tutorial.html
- 
+/* USB to Serial - Teensy becomes a USB to Serial converter
+   http://dorkbotpdx.org/blog/paul/teensy_as_benito_at_57600_baud
+
+   You must select Serial from the "Tools > USB Type" menu
+
    This example code is in the public domain.
 */
 
 // set this to the hardware serial port you wish to use
 #define HWSERIAL Serial2
 
-// Teensy 2.0 has the LED on pin 11
-// Teensy++ 2.0 has the LED on pin 6
-// Teensy 3.x / Teensy LC have the LED on pin 13
-const int led_pin = 13;
-const int clk_pin = 14;
-const int reset_pin = 4;
 unsigned long baud = 300;
+const int reset_pin = 4;
+const int led_pin = 13;  // 13 = Teensy 3.X & LC
+                         // 11 = Teensy 2.0
+                         //  6 = Teensy++ 2.0
+const int clk_pin = 14;
 
 // Create an IntervalTimer object 
 IntervalTimer myTimer;
@@ -44,9 +45,6 @@ void setup()
 
   myTimer.begin(gen_19200Hz, 26.042);  // toggle output every 26.042uS
 }
-
-// the loop() methor runs over and over again,
-// as long as the board has power
 
 long led_on_time=0;
 byte buffer[80];
