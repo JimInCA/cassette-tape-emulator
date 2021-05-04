@@ -40,7 +40,7 @@ Here is a list of the different pieces of firmware and applications that make up
 
 Transmitter
 ---
-The transmitter firmware runs on a Teensy 4.0 which is Arduino compatible.  You'll need to visit the PJRC website and install the Teensduino software add-on along with the Arduino IDE if you don't already have them installed.  The PJRC web site has all of the information that you should need on how to do this part of the process.
+The transmitter firmware runs on a Teensy 4.0 which is Arduino compatible.  You'll need to visit the PJRC website and install the Teensyduino software add-on along with the Arduino IDE if you don't already have them installed.  The PJRC web site has all of the information that you should need on how to do this part of the process.
 
 The transmitter firmware is a modified version of the Teensy's USBtoSerial example program.  The transmitter requires an external 19.2KHz clock which is provided by the Teensy.  The 19.2KHz clock is generated through an ISR that uses one of the Teensy's timers to generate the interrupt for the ISR.  I also needed to modify the setup for the external UART to set it to a baud rate of 300bps, no parity, and two stop bits which makes it compatible with the Motorola D5 Load routine. 
 
