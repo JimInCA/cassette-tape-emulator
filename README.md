@@ -78,6 +78,24 @@ arguments:
 
 All tests require that you connect the output of the transmitter directly to the input of the receiver.  This provides the ability for closed-loop testing.  
 
+An example execution of test-bit-boffer follows:
+```
+$ ./bin/test-bit-boffer.exe -i COM22 -o COM9 -b 300 -t 5 -n 8 -v 1
+Successfully connected to UART on port COM22 at baud rate 300.
+Connected to transmitter port COM22 at baudrate 300
+Successfully connected to UART on port COM9 at baud rate 300.
+Connected to receiver port COM9 at baudrate 300
+sent 0x43 -> received 0x43
+sent 0xe3 -> received 0xe3
+sent 0xdf -> received 0xdf
+sent 0x86 -> received 0x86
+sent 0x30 -> received 0x30
+sent 0x06 -> received 0x06
+sent 0xf8 -> received 0xf8
+sent 0xf4 -> received 0xf4
+Test 5 Passed!
+```
+
 bit-boffer-writer
 ---
 bit-boffer-writter is the application that you'll need to run to load code into the Motorola D5's ram.  It too can be built with either gcc or Visual Studio.
@@ -86,11 +104,23 @@ bit-boffer-writter's help menu lists the usage and arguments for the application
 
 ```
 $  ./bin/bit-boffer-writer.exe -h
-usage: bit-boffer-writer [-h] -f FILE -p COMPORT [-b BAUDRATE]
+usage: bit-boffer-writer [-h] -f FILE -p COMPORT [-b BAUDRATE] [-c NUMMARKS]
 
 arguments:
   -h             Show this help message and exit.
   -f FILE        Filename of S-Record input file.
   -p COMPORT     COM Port to which the device is connected.
   -b BAUDRATE    Desired baudrate, default: 300.
+  -c NUMMARKS    Number of marker cycles. default: 819.
 ```
+
+The expected output from running bit-boffer-writer should look like the following example.
+
+```
+$ ./bin/bit-boffer-writer.exe -f ./test/used5.s19 -p COM22 -b 300 -c 1024
+Successfully connected to UART on port COM22 at baud rate 300.
+DCB is ready for use.
+Sending file ./test/used5.s19 to port COM22 at baudrate 300
+```
+
+That's it for now and most of all, have fun with all of your projects.

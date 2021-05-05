@@ -220,7 +220,7 @@ int main(int argc, char **argv)
     if ((help == 1) || (file_name == NULL) || (portname == NULL))
     {
         int result = 0;
-        printf("usage: bit-boffer-writer [-h] -f FILE -p COMPORT [-b BAUDRATE]\n\n");
+        printf("usage: bit-boffer-writer [-h] -f FILE -p COMPORT [-b BAUDRATE] [-c NUMMARKS]\n\n");
         if (help == 1)
         {
             printf("arguments:\n");
@@ -228,6 +228,7 @@ int main(int argc, char **argv)
             printf("  -f FILE        Filename of S-Record input file.\n");
             printf("  -p COMPORT     COM Port to which the device is connected.\n");
             printf("  -b BAUDRATE    Desired baudrate, default: 300.\n");
+            printf("  -c NUMMARKS    Number of marker cycles. default: 819.\n");
         }
         else
         {
