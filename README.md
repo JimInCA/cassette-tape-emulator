@@ -35,7 +35,7 @@ Here is a list of the different pieces of firmware and applications that make up
 | transmitter       | The firmware for the Transmitter Teensy. |
 | receiver          | The firmware for the Receiver Teensy. |
 | test-bit-boffer   | Application programs for testing the Bit Boffer.  This requires the output of the transmitter to be connected directly to the input of the receiver. |
-| bit-boffer-writer | Application program that's used to load a *.s19 file onto the D5.  The *.s19 file is the output from the Motorola 6800 Assembler that you can find in one of my other repositories. |
+| bit-boffer-writer | Application program that's used to load a *.s19 file onto the D5.  The *.s19 file is the output from the Motorola 6800 Assembler that you find in this, one of my other repositories [Motorola 6800 Assembler](https://github.com/JimInCA/motorola-6800-assembler).|
 | doc | Documentation directory.  Currently has the manual for the MEK6802D5 and Bit Buffer article. |
 
 Transmitter
