@@ -46,7 +46,7 @@ The transmitter's firmware is a modified version of the Teensy's USBtoSerial exa
 
 Receiver
 ---
-The receiver firmware also runs on a Teensy 4.0 with the same configuration as described for the transmitter.  The receiver firmware is also based on the Teensy's USBtoSerial example.  The fist modification for the receiver's firmware was to set up the external UART for 300bps, no parity, and two stop bits to make it compatible with the Motorola D5's Punch routine.  The only other modification was to convert the hex data that's received on the UART RX pin to ascii and then send the ascii string to the USB to Serial port.  This allows you to monitor the data using a UART terminal window such as Tera Term.  
+The receiver firmware also runs on a Teensy 4.0 with the same configuration as described for the transmitter.  The receiver firmware is also based on the Teensy's USBtoSerial example.  The first modification for the receiver's firmware was to set up the external UART for 300bps, no parity, and two stop bits to make it compatible with the Motorola D5's Punch routine.  The only other modification was to convert the hex data that's received on the UART RX pin to ascii and then send the ascii string to the USB to Serial port.  This allows you to monitor the data using a UART terminal window such as Tera Term.  
 
 test-bit-boffer
 ---
