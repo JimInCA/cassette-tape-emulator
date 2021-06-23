@@ -5,9 +5,9 @@ A few years back, I picked up a Motorola D5 off of ebay.  I got it for nostalgic
 
 ![alt text](./images/mek6802d5.jpg?raw=true "MEK6802D5")
 
-The D5 is very "Old School".  When I learned to program the 6800/6802, I had to write out my program long hand, convert the opcodes/operands into machine code which also required calculating out any offsets for branches, and then enter my code one byte at a time.  This is very slow and tedious, but for one thing, once you've mastered the challenge, you truly do understand the workings of the microprocessor and its peripherals.  This is a skill that I've used through out my entire carrier as a hardware/software/firmware engineer and one skill that I'm grateful to have learned.  
+The D5 is very "Old School".  When I learned to program the 6800/6802, I had to write out my program long hand, convert the opcodes/operands into machine code which also required calculating out any offsets for branches, and then enter my code one byte at a time through the D5's keypad.  This is very slow and tedious, but for one thing, once you've mastered the challenge, you truly do understand the workings of the microprocessor and its peripherals.  This is a skill that I've used through out my entire carrier as a hardware/software/firmware engineer and one skill that I'm grateful to have learned.  
 
-The problem is that once you've entered your program, when you power down the D5, your program is lost and you have to re-enter your program one byte at a time all over again the next time you power up the D5.  To get around this, the engineers at Motorola included a boot-rom monitor that allows you to save your program to a cassette tape and then you can re-load your program from that tape at a later time.  But you still have to load the program the first time one byte at a time, which is a slow and error prone processes.
+The problem is that once you've entered your program, when you power down the D5, your program is lost and you have to re-enter your program one byte at a time all over again the next time you power up the D5.  To get around this, the engineers at Motorola included a boot-rom monitor that allows you to save your program to a cassette tape and then you can re-load your program from that tape at a later time.  But you still have to load the program the first time one byte at a time, which is a slow and error prone process.
 
 Bit Boffer
 ---
@@ -42,11 +42,11 @@ Transmitter
 ---
 The transmitter firmware runs on a Teensy 4.0 which is Arduino compatible.  You'll need to visit the PJRC website and install the Teensyduino software add-on along with the Arduino IDE if you don't already have them installed.  The PJRC web site has all of the information that you should need on how to do this part of the process.
 
-The transmitter firmware is a modified version of the Teensy's USBtoSerial example program.  The transmitter requires an external 19.2KHz clock which is provided by the Teensy.  The 19.2KHz clock is generated through an ISR that uses one of the Teensy's timers to generate the interrupt for the ISR.  I also needed to modify the setup for the external UART to set it to a baud rate of 300bps, no parity, and two stop bits which makes it compatible with the Motorola D5 Load routine. 
+The transmitter's firmware is a modified version of the Teensy's USBtoSerial example program.  The transmitter requires an external 19.2KHz clock which is provided by the Teensy.  The 19.2KHz clock is generated through an ISR that uses one of the Teensy's timers to generate the interrupt for the ISR.  I also needed to modify the setup for the external UART to set it to a baud rate of 300bps, no parity, and two stop bits which makes it compatible with the Motorola D5's Load routine. 
 
 Receiver
 ---
-The receiver firmware also runs on a Teensy 4.0 with the same configuration as described for the transmitter.  The receiver firmware is also based on the Teensy's USBtoSerial example.  The modifications for the receiver were to set up the external UART for 300bps, no parity, and two stop bits to make it compatible with the Motorola D5 Punch routine.  The only other modification was to convert the hex data that's received on the UART RX pin to ascii and then send the ascii string to the USB to Serial port.  This allows you to monitor the data using a UART terminal window such as Tera Term.  
+The receiver firmware also runs on a Teensy 4.0 with the same configuration as described for the transmitter.  The receiver firmware is also based on the Teensy's USBtoSerial example.  The fist modification for the receiver's firmware was to set up the external UART for 300bps, no parity, and two stop bits to make it compatible with the Motorola D5's Punch routine.  The only other modification was to convert the hex data that's received on the UART RX pin to ascii and then send the ascii string to the USB to Serial port.  This allows you to monitor the data using a UART terminal window such as Tera Term.  
 
 test-bit-boffer
 ---
@@ -100,7 +100,7 @@ bit-boffer-writer
 ---
 bit-boffer-writter is the application that you'll need to run to load code into the Motorola D5's ram.  It too can be built with either gcc or Visual Studio.
 
-bit-boffer-writter's help menu lists the usage and arguments for the application as shown below. 
+bit-boffer-writter's help menu lists the usage and arguments for the application as shown below: 
 
 ```
 $  ./bin/bit-boffer-writer.exe -h
